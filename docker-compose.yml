@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:14
+    container_name: artifactory-db
+    restart: always
+    environment:
+      POSTGRES_USER: artifactory
+      POSTGRES_PASSWORD: OGball@!
+      POSTGRES_DB: artifactory
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  artifactory:
+    image: <YOUR_DOCKERHUB_USERNAME>/artifactory-custom:latest
+    container_name: artifactory
+    restart: always
+    depends_on:
+      - postgres
+    ports:
+      - "8888:8081"
+    volumes:
+      - artdata:/var/opt/jfrog/artifactory
+
+volumes:
+  pgdata:
+  artdata:

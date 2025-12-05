@@ -1,0 +1,12 @@
+configVersion: 1
+
+shared:
+  node:
+    id: "art1"
+    name: "artifactory-primary"
+
+database:
+  type: postgresql
+  url: "postgresql://artifactory-db:5432/artifactory"
+  username: "artifactory"
+  password: "OGball@!"

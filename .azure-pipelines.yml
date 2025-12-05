@@ -1,0 +1,21 @@
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+
+- task: DockerInstaller@0
+  displayName: "Install Docker"
+
+- task: Docker@2
+  displayName: "Build and Push Artifactory Image"
+  inputs:
+    containerRegistry: 'dockerhub-sc'
+    repository: 'tfsazdev/artifactory-custom'
+    command: 'buildAndPush'
+    Dockerfile: 'Dockerfile'
+    tags: |
+      latest
+      $(Build.BuildId)
