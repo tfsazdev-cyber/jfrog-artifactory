@@ -15,7 +15,7 @@ services:
       - "5432:5432"
 
   artifactory:
-    image: <YOUR_DOCKERHUB_USERNAME>/artifactory-custom:latest
+    image: tfsazdev/artifactory-custom:latest
     container_name: artifactory
     restart: always
     depends_on:
